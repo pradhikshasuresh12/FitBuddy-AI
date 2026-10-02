@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Your Plan{% endblock %}
+
+{% block content %}
+<section class="result-header">
+    <div class="result-back">
+        <a href="/" class="back-link">&#8592; Back to Home</a>
+    </div>
+    <div class="result-title-row">
+        <h1>{{ user.name }}'s 7-Day Plan</h1>
+        <a href="/users" class="btn btn-outline btn-sm">View All Users</a>
+    </div>
+</section>
+
+<section class="card result-summary">
+    <div class="summary-item">
+        <span class="summary-label">Name</span>
+        <span class="summary-value">{{ user.name }}</span>
+    </div>
+    <div class="summary-item">
+        <span class="summary-label">Age</span>
+        <span class="summary-value">{{ user.age }}</span>
+    </div>
+    <div class="summary-item">
+        <span class="summary-label">Goal</span>
+        <span class="summary-value">{{ user.fitness_goal }}</span>
+    </div>
+    <div class="summary-item">
+        <span class="summary-label">Intensity</span>
+        <span class="summary-value">{{ user.workout_intensity }}</span>
+    </div>
+</section>
+
+<section class="card plan-card">
+    <h2 class="plan-heading">Your AI-Generated Plan</h2>
+    <div id="planContent" hidden>{{ user.plan }}</div>
+    <article id="planRender" class="plan-content"></article>
+</section>
+{% endblock %}

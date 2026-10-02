@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}All Users{% endblock %}
+
+{% block content %}
+<section class="users-header">
+    <h1>All Users &amp; History</h1>
+    <a href="/" class="btn btn-outline btn-sm">+ New Plan</a>
+</section>
+
+{% if users|length == 0 %}
+<div class="card empty-state">
+    <div class="empty-icon">&#x1F4CB;</div>
+    <h2>No plans yet</h2>
+    <p>Generated fitness plans will appear here.</p>
+    <a href="/" class="btn btn-primary">Create Your First Plan</a>
+</div>
+{% else %}
+<div class="users-list">
+    {% for user in users %}
+    <div class="card user-card" onclick="window.location.href='/result/{{ user.id }}'">
+        <div class="user-avatar">{{ user.name[0]|upper }}</div>
+        <div class="user-info">
+            <h3>{{ user.name }}</h3>
+            <p class="user-meta">
+                Age {{ user.age }} &middot; {{ user.fitness_goal }} &middot; {{ user.workout_intensity }}
+            </p>
+            <p class="user-date">{{ user.created_at.strftime('%B %d, %Y at %H:%M') }}</p>
+        </div>
+        <div class="user-action">
+            <span class="arrow">&#8594;</span>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="hero-badge">AI-Powered Fitness Planner</div>
+    <h1 class="hero-title">Your Personal <span class="accent">7-Day Wellness</span> Plan</h1>
+    <p class="hero-subtitle">
+        Get a personalized fitness and wellness plan powered by Google Gemini AI.
+        Safe, beginner-friendly, and tailored just for you.
+    </p>
+</section>
+
+<section class="card form-card">
+    <div class="card-header">
+        <h2>Tell us about yourself</h2>
+        <p>Fill in your details and we'll generate a custom 7-day plan.</p>
+    </div>
+
+    <form action="/generate" method="POST" class="fitness-form" id="planForm">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="e.g. Alex Johnson" required>
+        </div>
+
+        <div class="form-group">
+            <label for="age">Age</label>
+            <input type="number" id="age" name="age" min="10" max="100" placeholder="e.g. 21" required>
+        </div>
+
+        <div class="form-group">
+            <label for="fitness_goal">Fitness Goal</label>
+            <select id="fitness_goal" name="fitness_goal" required>
+                <option value="" disabled selected>Select your goal</option>
+                <option value="Weight Loss">Weight Loss</option>
+                <option value="Muscle Gain">Muscle Gain</option>
+                <option value="Endurance">Improve Endurance</option>
+                <option value="Flexibility">Improve Flexibility</option>
+                <option value="General Fitness">General Fitness</option>
+                <option value="Stress Relief">Stress Relief</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="workout_intensity">Workout Intensity</label>
+            <select id="workout_intensity" name="workout_intensity" required>
+                <option value="" disabled selected>Select intensity</option>
+                <option value="Low">Low — Just getting started</option>
+                <option value="Medium">Medium — Some exercise experience</option>
+                <option value="High">High — Regularly active</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block" id="generateBtn">
+            <span class="btn-text">Generate My Plan</span>
+            <span class="btn-loader" hidden>
+                <span class="spinner"></span> Generating...
+            </span>
+        </button>
+    </form>
+</section>
+{% endblock %}
